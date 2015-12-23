@@ -27,3 +27,9 @@ FIXME: listing of options this app accepts.
 ### Any Other Sections
 ### That You Think
 ### Might be Useful
+
+How to run tests in 'lein repl'
+1.(require '[eftest.runner :refer [find-tests run-tests]])
+2.(run-tests (find-tests "test"))
+for all test in the 'test' folder, or:
+(run-tests (find-tests "path/to/test/or/namespace"))
