@@ -16,20 +16,13 @@ FIXME: explanation
 
 FIXME: listing of options this app accepts.
 
-## Examples
-
-...
-
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
+### Development
 
 How to run tests in 'lein repl'
-1.(require '[eftest.runner :refer [find-tests run-tests]])
+```clojure 1. (require '[eftest.runner :refer [find-tests run-tests]])
 2.(run-tests (find-tests "test"))
+```
 for all test in the 'test' folder, or:
+```clojure
 (run-tests (find-tests "path/to/test/or/namespace"))
+```
