@@ -10,7 +10,8 @@
                  [ring/ring-json "0.3.1"]
                  [ring/ring-mock "0.3.0"]
                  [compojure "1.4.0"]
-                 [environ "1.0.1"]]
+                 [environ "1.0.1"]
+                 [eftest "0.1.0"]]
 
   :plugins [[lein-environ "1.0.1"]]
 

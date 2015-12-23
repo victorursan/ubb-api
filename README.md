@@ -16,14 +16,17 @@ FIXME: explanation
 
 FIXME: listing of options this app accepts.
 
-## Examples
+### Development
 
-...
+#### Testing
+We are using [eftest](https://github.com/weavejester/eftest) test runner.
 
-### Bugs
-
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
+For running the test in the project repl:
+```clojure
+(require '[eftest.runner :refer [find-tests run-tests]])
+(run-tests (find-tests "test"))
+```
+for a test
+```clojure
+(run-tests (find-tests "path/to/test/or/namespace"))
+```
