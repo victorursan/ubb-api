@@ -18,11 +18,15 @@ FIXME: listing of options this app accepts.
 
 ### Development
 
-How to run tests in 'lein repl'
-```clojure 1. (require '[eftest.runner :refer [find-tests run-tests]])
-2.(run-tests (find-tests "test"))
+#### Testing
+We are using [eftest](https://github.com/weavejester/eftest) test runner.
+
+For running the test in the project repl:
+```clojure
+(require '[eftest.runner :refer [find-tests run-tests]])
+(run-tests (find-tests "test"))
 ```
-for all test in the 'test' folder, or:
+for a test
 ```clojure
 (run-tests (find-tests "path/to/test/or/namespace"))
 ```
