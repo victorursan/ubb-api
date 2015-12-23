@@ -1,7 +1,29 @@
 (ns ubb-api.core
-  (:gen-class))
+  (:require [ring.adapter.jetty :as jetty]
+            [ring.middleware.json :as json]
+            [ring.util.response :refer [response]]
+            [ring.middleware.keyword-params :refer [wrap-keyword-params]]
+            [ring.middleware.params :refer [wrap-params]]
+            [environ.core :refer [env]]
+            [compojure.core :refer [defroutes wrap-routes GET]]))
+
+(defroutes app-routes
+  (GET "/api/health" [] (response {"up" true})))
+
+(defn app
+  [routes]
+  (-> routes
+      wrap-keyword-params
+      wrap-params
+      json/wrap-json-params
+      json/wrap-json-response))
 
 (defn -main
-  "I don't do a whole lot ... yet."
+  "Starting Jetty"
   [& args]
-  (println "Hello, World!"))
+  (let [port        (Integer. (or (env :port) 8000))
+        max-threads (Integer. (or (env :max-threads) 100))
+        min-threads (Integer. (or (env :min-threads) 50))
+        middleware-stack (app app-routes)
+        config      {:port port :join? false :max-threads max-threads :min-threads min-threads}]
+    (jetty/run-jetty middleware-stack config)))
