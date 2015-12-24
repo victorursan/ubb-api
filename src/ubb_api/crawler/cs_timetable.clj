@@ -1,6 +1,7 @@
 (ns ubb-api.crawler.cs-timetable
   (:require [net.cgrand.enlive-html :as html]
-            [clojure.java.io :refer [as-url]]))
+            [clojure.java.io :refer [as-url]]
+            [ring.adapter.jetty :as jetty]))
 
 (def row-size 8)
 
