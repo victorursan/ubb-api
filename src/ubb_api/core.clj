@@ -5,11 +5,12 @@
             [ring.middleware.keyword-params :refer [wrap-keyword-params]]
             [ring.middleware.params :refer [wrap-params]]
             [environ.core :refer [env]]
-            [compojure.core :refer [defroutes wrap-routes GET]]))
+            [compojure.core :refer [defroutes wrap-routes GET ANY]]
+            [cemerick.drawbridge :refer [ring-handler]]))
 
 (defroutes app-routes
   (GET "/api/health" [] (response {"up" true}))
-  (let [nrepl-handler (cemerick.drawbridge/ring-handler)]
+  (let [nrepl-handler (ring-handler)]
     (ANY "/repl" request (nrepl-handler request))))
 
 (defn app
