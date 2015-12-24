@@ -8,7 +8,9 @@
             [compojure.core :refer [defroutes wrap-routes GET]]))
 
 (defroutes app-routes
-  (GET "/api/health" [] (response {"up" true})))
+  (GET "/api/health" [] (response {"up" true}))
+  (let [nrepl-handler (cemerick.drawbridge/ring-handler)]
+    (ANY "/repl" request (nrepl-handler request))))
 
 (defn app
   [routes]
