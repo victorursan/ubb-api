@@ -1,4 +1,4 @@
-(defproject ubb-api "0.1.0-SNAPSHOT"
+(defproject ubb-api "0.1.0"
   :description "FIXME: write description"
   :url "https://github.com/victorursan/ubb-api"
   :license {:name "The BSD 2-Clause License"
@@ -12,10 +12,12 @@
                  [compojure "1.4.0"]
                  [environ "1.0.1"]
                  [eftest "0.1.0"]
-                 [enlive "1.1.6"]]
+                 [enlive "1.1.6"]
+                 [com.cemerick/drawbridge "0.0.7"]]
 
   :plugins [[lein-environ "1.0.1"]]
 
   :main ^:skip-aot ubb-api.core
   :target-path "target/%s"
+  :uberjar-name "ubb-api-standalone.jar"
   :profiles {:uberjar {:aot :all}})
