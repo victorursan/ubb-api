@@ -4,6 +4,7 @@
             [ring.util.response :refer [response]]
             [ring.middleware.keyword-params :refer [wrap-keyword-params]]
             [ring.middleware.params :refer [wrap-params]]
+            [ubb-api.handlers.v1.csubb :as v1.csubb]
             [environ.core :refer [env]]
             [compojure.core :refer [defroutes wrap-routes GET ANY]]
             [cemerick.drawbridge :refer [ring-handler]]
@@ -20,6 +21,7 @@
 
 (defroutes app-routes
   (GET "/api/health" [] (response {"up" true}))
+  (GET "/api/v1/csubb/:year" [year] (v1.csubb/schedule year))
   (let [nrepl-handler (ring-handler)]
     (ANY "/repl" request (drawbridge-handler request)
                          (nrepl-handler request))))
