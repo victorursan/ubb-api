@@ -1,32 +1,49 @@
 # ubb-api
 
-FIXME: description
+## API
 
-## Installation
+```
+GET /api/v1/csubb/:year
+```
 
-Download from http://example.com/FIXME.
+will return an array of objects, e.g.
 
-## Usage
+```
+GET /api/v1/csubb/ie2
 
-FIXME: explanation
 
-    $ java -jar ubb-api-0.1.0-standalone.jar [args]
+[{"week-day":"Marti","time":"14-16","frequency":" ","location":"2/I","group":"IE2","type":"Curs","subject":"Ingineria sistemelor soft","professor":"Conf. CHIOREAN Dan"},
+{"week-day":"Marti","time":"16-18","frequency":" ","location":"2/I","group":"IE2","type":"Curs","subject":"Inteligenta artificiala","professor":"Conf. OLTEAN Mihai"},
+{"week-day":"Marti","time":"18-20","frequency":" ","location":"2/I","group":"IE2","type":"Curs","subject":"Sisteme de gestiune a bazelor de date","professor":"Lect. SUCIU Dan Mircea"},
+{"week-day":"Miercuri","time":"8-10","frequency":" ","location":"5/I","group":"IE2","type":"Curs","subject":"Retele de calculatoare","professor":"Lect. DARABANT Sergiu"},
+{"week-day":"Miercuri","time":"14-16","frequency":"sapt. 1","location":"L321","group":"921/2","type":"Laborator","subject":"Inteligenta artificiala","professor":"Drd. BOTA Florentin"},
+{"week-day":"Miercuri","time":"14-16","frequency":"sapt. 2","location":"L321","group":"921/2","type":"Laborator","subject":"Ingineria sistemelor soft","professor":"Conf. CHIOREAN Dan"}]
+```
 
-## Options
-
-FIXME: listing of options this app accepts.
-
-### Development
+## Development
 
 #### Testing
-We are using [eftest](https://github.com/weavejester/eftest) test runner.
 
+We are using [eftest](https://github.com/weavejester/eftest) test runner.
 For running the test in the project repl:
-```clojure
-(require '[eftest.runner :refer [find-tests run-tests]])
-(run-tests (find-tests "test"))
+
 ```
-for a test
+lein repl
+```
+
 ```clojure
-(run-tests (find-tests "path/to/test/or/namespace"))
+  (require '[eftest.runner :refer [find-tests run-tests]])
+  (run-tests (find-tests "test"))
+```
+
+for one test
+
+```clojure
+ (run-tests (find-tests "path/to/test/or/namespace"))
+```
+
+#### Run the App
+
+```
+lein run
 ```
